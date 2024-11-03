@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="hu" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Könyv módosítása</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<div class="container">
+    <h1>Könyv módosítása</h1>
+
+    <form th:action="@{/books/edit/{id}(id=${book.id})}" method="post">
+        <input type="text" name="title" th:value="${book.title}" placeholder="Cím" required>
+        <input type="text" name="author" th:value="${book.author}" placeholder="Szerző" required>
+        <input type="text" name="genre" th:value="${book.genre}" placeholder="Műfaj" required>
+        <input type="text" name="isbn" th:value="${book.isbn}" placeholder="ISBN" required>
+        <input type="number" name="publicationYear" th:value="${book.publicationYear}" placeholder="Kiadás éve" required>
+
+        <div class="button-container">
+            <button type="submit">Módosítás mentése</button>
+            <a href="/books">
+                <button type="button">Vissza a könyvekhez</button>
+            </a>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>
+
+

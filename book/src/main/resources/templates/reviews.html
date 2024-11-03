@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="hu" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vélemények</title>
+  <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<h1>Vélemények a következő könyvhöz: <span th:text="${book.title}">Könyv címe</span></h1>
+
+<ul id="review-list">
+  <li th:each="review : ${reviews}">
+    <span th:text="${review.rating}">Értékelés</span>:
+    <span th:text="${review.comment}">Vélemény</span>
+
+    <a th:href="@{/reviews/edit/{id}(id=${review.id})}">
+      <button>Módosítás</button>
+    </a>
+
+    <form th:action="@{/reviews/delete/{id}(id=${review.id})}" method="post" style="display:inline;">
+      <input type="hidden" name="_method" value="delete" />
+      <button type="submit">Törlés</button>
+    </form>
+  </li>
+</ul>
+
+<a th:href="@{/reviews/book/{bookId}/add(bookId=${book.id})}">
+  <button>Új vélemény hozzáadása</button>
+</a>
+
+<a href="/books">
+  <button>Vissza a könyvekhez</button>
+</a>
+
+</body>
+</html>
+

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="hu" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Könyvek</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<h1>Könyvek listája</h1>
+
+<ul id="book-list">
+    <li th:each="book : ${books}">
+        <div>
+            <span th:text="${book.title}">Könyv címe</span> -
+            <span th:text="${book.author}">Szerző</span>
+        </div>
+
+        <div class="book-buttons">
+            <a th:href="@{/books/details/{id}(id=${book.id})}">
+                <button>Részletek</button>
+            </a>
+            <a th:href="@{/books/edit/{id}(id=${book.id})}">
+                <button>Módosítás</button>
+            </a>
+
+            <form th:action="@{/books/delete/{id}(id=${book.id})}" method="post" style="display:inline;">
+                <input type="hidden" name="_method" value="delete" />
+                <button type="submit">Törlés</button>
+            </form>
+
+            <a th:href="@{/reviews/book/{bookId}(bookId=${book.id})}">
+                <button>Vélemények</button>
+            </a>
+        </div>
+    </li>
+</ul>
+
+<a href="/books/add">
+    <button>Új könyv hozzáadása</button>
+</a>
+
+</body>
+</html>
+
+
+
+

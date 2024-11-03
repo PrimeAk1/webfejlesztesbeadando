@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="hu" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Új könyv hozzáadása</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<div class="container">
+    <h1>Új könyv hozzáadása</h1>
+
+    <form action="/books/add" method="post">
+        <input type="text" name="title" placeholder="Cím" required>
+        <input type="text" name="author" placeholder="Szerző" required>
+        <input type="text" name="genre" placeholder="Műfaj" required>
+        <input type="text" name="isbn" placeholder="ISBN" required>
+        <input type="number" name="publicationYear" placeholder="Kiadás éve" required>
+
+        <div class="button-container">
+            <button type="submit">Könyv hozzáadása</button>
+            <a href="/books">
+                <button type="button">Vissza a könyvekhez</button>
+            </a>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>
+

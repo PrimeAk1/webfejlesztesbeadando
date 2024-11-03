@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="hu" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Új vélemény hozzáadása</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div class="container">
+    <h1>Új vélemény hozzáadása</h1>
+
+    <form th:action="@{/reviews/book/{bookId}/add(bookId=${bookId})}" method="post">
+        <label>Értékelés:</label>
+        <input type="number" name="rating" min="1" max="5" required>
+
+        <label>Vélemény:</label>
+        <textarea name="comment" required></textarea>
+
+        <button type="submit">Vélemény hozzáadása</button>
+    </form>
+
+    <a href="/books">
+        <button>Vissza a könyvekhez</button>
+    </a>
+</div>
+
+</body>
+</html>
+
+

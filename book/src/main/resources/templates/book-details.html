@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="hu" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Könyv részletei</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div class="container">
+    <h1 th:text="${book.title}">Könyv címe</h1>
+
+    <div class="book-details">
+        <p><strong>Szerző:</strong> <span th:text="${book.author}">Szerző</span></p>
+        <p><strong>Műfaj:</strong> <span th:text="${book.genre}">Műfaj</span></p>
+        <p><strong>ISBN:</strong> <span th:text="${book.isbn}">ISBN</span></p>
+        <p><strong>Kiadás éve:</strong> <span th:text="${book.publicationYear}">Kiadás éve</span></p>
+    </div>
+
+    <h2>Vélemények</h2>
+    <ul id="review-list">
+        <li th:each="review : ${reviews}">
+            <p><strong>Értékelés:</strong> <span th:text="${review.rating}">Értékelés</span></p>
+            <p><strong>Vélemény:</strong> <span th:text="${review.comment}">Vélemény szövege</span></p>
+        </li>
+    </ul>
+
+    <a href="/books">
+        <button>Vissza a könyvekhez</button>
+    </a>
+</div>
+</body>
+</html>
